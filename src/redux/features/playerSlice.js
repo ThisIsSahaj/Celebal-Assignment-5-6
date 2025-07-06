@@ -28,6 +28,30 @@ const playerSlice = createSlice({
       state.isActive = true;
     },
 
+    // setActiveSong: (state, action) => {
+    //   state.activeSong = action.payload.song;
+
+    //   // Handles ShazamCore formats consistently
+    //   const rawData = action.payload.data;
+
+    //   if (Array.isArray(rawData)) {
+    //     // Simple array of songs (like in Top Charts)
+    //     state.currentSongs = rawData;
+    //   } else if (rawData?.tracks?.hits) {
+    //     // Search results
+    //     state.currentSongs = rawData.tracks.hits.map(hit => hit.track);
+    //   } else if (rawData?.tracks) {
+    //     // Playlist or album
+    //     state.currentSongs = rawData.tracks;
+    //   } else {
+    //     state.currentSongs = [];
+    //   }
+
+    //   state.currentIndex = action.payload.i;
+    //   state.isActive = true;
+    // },
+
+
     nextSong: (state, action) => {
       if (state.currentSongs[action.payload]?.track) {
         state.activeSong = state.currentSongs[action.payload]?.track;
@@ -49,6 +73,19 @@ const playerSlice = createSlice({
       state.currentIndex = action.payload;
       state.isActive = true;
     },
+
+//     nextSong: (state, action) => {
+//   state.currentIndex = action.payload;
+//   state.activeSong = state.currentSongs[action.payload];
+//   state.isActive = true;
+// },
+
+// prevSong: (state, action) => {
+//   state.currentIndex = action.payload;
+//   state.activeSong = state.currentSongs[action.payload];
+//   state.isActive = true;
+// },
+
 
     playPause: (state, action) => {
       state.isPlaying = action.payload;
